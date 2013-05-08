@@ -1,6 +1,7 @@
 import sys
 import json
 import re
+import operator
 
 #dictionary for holding all sentiment scroes keyed by word/phrase
 sentiment_dict = {}
@@ -57,8 +58,13 @@ def evaluate_sentiment(tweet_file):
                 evaluated_sentiment_dict[word] = evaluated_sentiment_score
         #else:
             #print 0
-    for key in evaluated_sentiment_dict:
-        print key + " " + str(evaluated_sentiment_dict[key])
+
+    sorted_evaluated_sentiment = sorted(evaluated_sentiment_dict.iteritems(), key=operator.itemgetter(1))
+    #print sorted_evaluated_sentiment
+    sorted_evaluated_sentiment.reverse()
+
+    for (word, score) in sorted_evaluated_sentiment:
+        print word + " " + str(score)
 
 def lines(fp):
     print str(len(fp.readlines()))
