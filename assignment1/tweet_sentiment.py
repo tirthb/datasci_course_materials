@@ -17,14 +17,11 @@ def evaluate_sentiment(tweet_file):
         if tweet_text != None:
             #print "tweet_text:" + tweet_text
             sum_sentiment_score = 0
-            for key in sentiment_dict.keys():
-                sentiment_score = sentiment_dict[key]
+            for word in re.findall(r'[a-z\']+', tweet_text.lower(), re.I):
+                sentiment_score = sentiment_dict.get(word)
                 #print "sentiment_score:" + sentiment_score
-                matches = re.findall(r'\b%s\b' % key, tweet_text, re.I)
-                if matches:
-                    #print matches
-                    sum_sentiment_score += (len(matches)*sentiment_score)
-            #print "sum:" + str(sum_sentiment_score)
+                if sentiment_score != None:
+                    sum_sentiment_score += sentiment_score
             print sum_sentiment_score
         else:
             print 0
