@@ -26,9 +26,6 @@ def evaluate_sentiment(tweet_file):
         else:
             print 0
 
-def lines(fp):
-    print str(len(fp.readlines()))
-
 def main():
     #print "******************************************************************" 
     sent_file = open(sys.argv[1])
