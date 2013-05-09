@@ -19,7 +19,7 @@ def evaluate_sentiment(tweet_file):
         if tweet_text != None:
             #print "tweet_text:" + tweet_text
             sum_sentiment_score = 0
-            for word in re.findall(r'[@a-z\']+', tweet_text.lower(), re.I):
+            for word in re.findall(r'[@a-z\']+', tweet_text, re.I):
                 sentiment_score = sentiment_dict.get(word)
                 #print "sentiment_score:" + sentiment_score
                 if sentiment_score != None:
@@ -27,7 +27,7 @@ def evaluate_sentiment(tweet_file):
             
             #print "sum:" + str(sum_sentiment_score)
 
-            all_words = re.findall(r'[a-z\']+', tweet_text.lower())
+            all_words = re.findall(r'[@a-z\']+', tweet_text, re.I)
             #all_words = tweet_text.lower().split()
             #all_words = [word for word in all_words if re.match(r'[a-z]', word)]
             #print "all_words:" + str(all_words)
