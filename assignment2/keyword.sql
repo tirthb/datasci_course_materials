@@ -16,6 +16,7 @@ group by a.docid, b.docid
 order by score desc
 ;
 
+--viewing the term
 select a.docid, a.term, sum (a.count * b.count) as score
 from frequency a, 
 (
